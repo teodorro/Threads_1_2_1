@@ -18,7 +18,7 @@ public class Waiter implements Runnable {
 
     private void sleep() {
         try {
-            Thread.sleep(3000);
+            Thread.sleep(2200);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

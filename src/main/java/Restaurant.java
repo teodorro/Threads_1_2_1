@@ -16,11 +16,6 @@ public class Restaurant {
         new Thread(null, new Visitor(this, "visitor5"), "visitor5").start();
     }
 
-    public void enter(){
-        System.out.println(Thread.currentThread().getName() + " comes into the restaurant");
-        sleep();
-    }
-
     public synchronized Waiter getWaiter(){
         try {
             while (waiters.isEmpty()) {
@@ -49,7 +44,7 @@ public class Restaurant {
 
     private void sleep() {
         try {
-            Thread.sleep(3000);
+            Thread.sleep(2600);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

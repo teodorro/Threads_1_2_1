@@ -9,7 +9,8 @@ public class Visitor implements Runnable {
 
     @Override
     public void run() {
-        restaurant.enter();
+        System.out.println(Thread.currentThread().getName() + " comes into the restaurant");
+        sleep();
         Waiter waiter = restaurant.getWaiter();
 
         Thread thread = new Thread(waiter);
@@ -21,11 +22,15 @@ public class Visitor implements Runnable {
         }
         restaurant.addWaiter(waiter);
         System.out.println(name + " started to eat");
+        sleep();
+        System.out.println(name + " went home");
+    }
+
+    private void sleep() {
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println(name + " went home");
     }
 }
