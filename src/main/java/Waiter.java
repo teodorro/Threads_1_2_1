@@ -1,26 +1,24 @@
-public class Waiter implements Runnable {
+public class Waiter extends Sleepable implements Runnable {
     private String name;
     private Restaurant restaurant;
 
-    public Waiter(String name, Restaurant restaurant) {
+    public Waiter( Restaurant restaurant, String name) {
         this.name = name;
         this.restaurant = restaurant;
     }
 
     @Override
     public void run() {
-        System.out.println(name + " got an order");
-        sleep();
-        restaurant.tellCook();
-        System.out.println(name + " is bringing the order");
-        sleep();
-    }
+        while (true) {
+            Thread visitor = restaurant.getVisitor();
 
-    private void sleep() {
-        try {
-            Thread.sleep(2200);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.out.println(name + " got an order");
+            sleep();
+            restaurant.tellCook();
+            System.out.println(name + " is bringing the order");
+            sleep();
+            restaurant.addOrder(visitor.getName());
         }
     }
+
 }
